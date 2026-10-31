@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Nexus - Top 10 AI Applications & Comparison Hub</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            cyan: '#06b6d4',
+                            purple: '#8b5cf6',
+                            magenta: '#ec4899',
+                            dark: '#0B0F17',
+                            card: '#131A29',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                        }
+                    },
+                    boxShadow: {
+                        'glow-cyan': '0 0 25px -5px rgba(6, 182, 212, 0.4)',
+                        'glow-purple': '0 0 25px -5px rgba(139, 92, 246, 0.4)',
+                        'glow-magenta': '0 0 25px -5px rgba(236, 72, 153, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B0F17;
+            color: #F3F4F6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Custom Glassmorphism Effects */
+        .glass-panel {
+            background: rgba(19, 26, 41, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-panel-hover:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.2);
+        }
+
+        /* Animated Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .gradient-border-btn {
+            position: relative;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, #06b6d4, #8b5cf6, #ec4899);
+            padding: 1px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0F17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1F2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151;
+        }
+
+        /* Modal Transition */
+        .modal-blur {
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-purple-500 selection:text-white">
+
+    <!-- Ambient Glowing Background Elements -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+    <div class="fixed top-1/3 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-[140px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-10 left-1/3 w-96 h-96 bg-pink-500/10 rounded-full blur-[130px] pointer-events-none z-0"></div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Logo -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-purple-500 to-pink-500 p-[2px]">
+                    <div class="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center">
+                        <i class="fa-solid font-bold fa-brain gradient-text text-xl"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-white">AI<span class="gradient-text">NEXUS</span></span>
+                    <span class="block text-[10px] font-mono tracking-widest text-gray-400 uppercase -mt-1">Directory & Benchmarks</span>
+                </div>
+            </div>
+
+            <!-- Global Quick Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#directory" class="hover:text-cyan-400 transition-colors">Directory</a>
+                <a href="#comparison" class="hover:text-purple-400 transition-colors">Matrix Comparison</a>
+                <a href="#playground" class="hover:text-pink-400 transition-colors">Live Playground</a>
+            </nav>
+
+            <!-- Top CTA Buttons -->
+            <div class="flex items-center gap-3">
+                <button onclick="scrollToSection('playground')" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-gray-200">
+                    <i class="fa-solid fa-terminal text-cyan-400"></i> Prompt Simulator
+                </button>
+                <a href="#comparison" class="gradient-border-btn shadow-glow-purple">
+                    <div class="bg-brand-dark hover:bg-transparent transition-colors px-4 py-2 rounded-[11px] text-xs font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-pink-400"></i> Compare Tools
+                    </div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full space-y-16">
+
+        <!-- Hero Section -->
+        <section class="text-center space-y-6 pt-6 pb-4">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel border-purple-500/30 text-xs text-purple-300 font-medium">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                Curated 2026 AI Ecosystem Intelligence
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white max-w-4xl mx-auto leading-tight">
+                Discover & Benchmark The World's Top <span class="gradient-text">10 AI Applications</span>
+            </h1>
+            <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                Filter, compare performance, analyze capabilities, and test real-time simulated outputs from today's most powerful AI platforms.
+            </p>
+
+            <!-- Global Stats Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto pt-4">
+                <div class="glass-panel p-4 rounded-2xl text-center">
+                    <div class="text-2xl font-extrabold text-cyan-400">10</div>
+                    <div class="text-xs text-gray-400 mt-1">Leading AI Apps</div>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl text-center">
+                    <div class="text-2xl font-extrabold text-purple-400">7</div>
+                    <div class="text-xs text-gray-400 mt-1">Domains Tracked</div>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl text-center">
+                    <div class="text-2xl font-extrabold text-pink-400">100%</div>
+                    <div class="text-xs text-gray-400 mt-1">Interactive Specs</div>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl text-center">
+                    <div class="text-2xl font-extrabold text-emerald-400">Live</div>
+                    <div class="text-xs text-gray-400 mt-1">Prompt Playground</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Directory Section -->
+        <section id="directory" class="space-y-6 scroll-mt-24">
+            
+            <!-- Filter & Search Controls Bar -->
+            <div class="glass-panel p-5 rounded-3xl space-y-4">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    
+                    <!-- Search Input -->
+                    <div class="relative w-full md:w-96">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                        <input type="text" id="searchInput" placeholder="Search by name, feature, or company..." 
+                            class="w-full bg-brand-dark/80 border border-white/10 rounded-2xl pl-11 pr-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors">
+                    </div>
+
+                    <!-- Sorting Dropdown -->
+                    <div class="flex items-center gap-3 w-full md:w-auto justify-end">
+                        <label for="sortSelect" class="text-xs text-gray-400 whitespace-nowrap font-medium">Sort By:</label>
+                        <select id="sortSelect" class="bg-brand-dark/80 border border-white/10 text-xs text-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-purple-500">
+                            <option value="popularity">Popularity (High to Low)</option>
+                            <option value="rating">User Rating</option>
+                            <option value="name">Alphabetical (A-Z)</option>
+                            <option value="category">Category</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Category Chips Scrollable -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-1 pt-2 no-scrollbar" id="categoryChips">
+                    <!-- Dynamic rendering of chips via JS -->
+                </div>
+            </div>
+
+            <!-- App Cards Grid -->
+            <div id="appGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards will be populated by JS -->
+            </div>
+
+            <!-- No results state -->
+            <div id="noResults" class="hidden text-center py-16 space-y-3">
+                <i class="fa-solid fa-ghost text-4xl text-gray-600"></i>
+                <h3 class="text-lg font-bold text-gray-300">No AI applications match your search criteria</h3>
+                <p class="text-sm text-gray-500">Try adjusting your filters or search keywords.</p>
+                <button onclick="resetFilters()" class="px-4 py-2 text-xs bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-xl transition-colors mt-2">
+                    Reset All Filters
+                </button>
+            </div>
+        </section>
+
+        <!-- Interactive AI Comparison Matrix Section -->
+        <section id="comparison" class="space-y-6 scroll-mt-24">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <div class="text-xs font-mono font-bold text-cyan-400 tracking-wider uppercase">Head-to-Head</div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Interactive AI Comparison Matrix</h2>
+                    <p class="text-sm text-gray-400 mt-1">Select up to 3 tools to compare benchmark parameters side-by-side.</p>
+                </div>
+
+                <!-- Tool Selectors -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <select id="compareTool1" class="bg-brand-dark border border-cyan-500/40 text-xs text-white rounded-xl px-3 py-2 font-semibold">
+                        <!-- JS filled -->
+                    </select>
+                    <span class="text-xs text-gray-500 font-bold">VS</span>
+                    <select id="compareTool2" class="bg-brand-dark border border-purple-500/40 text-xs text-white rounded-xl px-3 py-2 font-semibold">
+                        <!-- JS filled -->
+                    </select>
+                    <span class="text-xs text-gray-500 font-bold hidden sm:inline">VS</span>
+                    <select id="compareTool3" class="bg-brand-dark border border-pink-500/40 text-xs text-white rounded-xl px-3 py-2 font-semibold hidden sm:inline-block">
+                        <!-- JS filled -->
+                    </select>
+                </div>
+            </div>
+
+            <!-- Comparison Table Container -->
+            <div class="glass-panel rounded-3xl overflow-hidden border border-white/10">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm" id="comparisonTable">
+                        <!-- Table header and dynamic content populated via JS -->
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Interactive AI Playground / Prompt Simulator -->
+        <section id="playground" class="space-y-6 scroll-mt-24">
+            <div>
+                <div class="text-xs font-mono font-bold text-pink-400 tracking-wider uppercase">Hands-On Environment</div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Live AI Prompt Simulator</h2>
+                <p class="text-sm text-gray-400 mt-1">Simulate model output, performance speed, and responses across different AI personas.</p>
+            </div>
+
+            <div class="glass-panel rounded-3xl p-6 border border-white/10 grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- Left Control Column -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-2">Select Target AI Model</label>
+                        <div class="grid grid-cols-2 gap-2" id="playgroundModelSelect">
+                            <!-- Model Selection Buttons dynamically injected -->
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-2">Preset Prompt Templates</label>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="setPrompt('code')" class="px-3 py-1.5 rounded-lg text-xs bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300">💻 Debug Python Code</button>
+                            <button onclick="setPrompt('creative')" class="px-3 py-1.5 rounded-lg text-xs bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300">✨ Sci-Fi Intro</button>
+                            <button onclick="setPrompt('research')" class="px-3 py-1.5 rounded-lg text-xs bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300">📊 Quantum Computing</button>
+                            <button onclick="setPrompt('image')" class="px-3 py-1.5 rounded-lg text-xs bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300">🎨 Midjourney Prompt</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="userPrompt" class="block text-xs font-semibold text-gray-300 mb-2">Input Prompt</label>
+                        <textarea id="userPrompt" rows="5" class="w-full bg-brand-dark/90 border border-white/10 rounded-2xl p-3.5 text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-cyan-500 font-mono resize-none" placeholder="Enter custom prompt instructions..."></textarea>
+                    </div>
+
+                    <button id="runSimBtn" onclick="runSimulation()" class="w-full py-3 rounded-xl font-semibold text-xs text-white bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 shadow-glow-purple hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-bolt"></i> Generate Simulated Response
+                    </button>
+                </div>
+
+                <!-- Right Output Display Column -->
+                <div class="lg:col-span-7 flex flex-col justify-between bg-brand-dark/80 rounded-2xl p-5 border border-white/10">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                            <div class="flex items-center gap-2">
+                                <span id="activeModelBadge" class="w-3 h-3 rounded-full bg-cyan-400"></span>
+                                <span id="activeModelTitle" class="text-xs font-bold text-white">ChatGPT (GPT-4o) Output</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-[11px] font-mono text-gray-400">
+                                <span>Tokens: <strong id="tokenCount" class="text-cyan-400">0</strong></span>
+                                <span>Latency: <strong id="latencyMs" class="text-purple-400">0ms</strong></span>
+                            </div>
+                        </div>
+
+                        <!-- Output Box -->
+                        <div id="simulationOutput" class="min-h-[220px] font-mono text-xs text-gray-300 leading-relaxed whitespace-pre-wrap overflow-y-auto max-h-[300px] p-2">
+                            <span class="text-gray-500 italic">// Simulated AI output will render here word-by-word upon clicking 'Generate Simulated Response'...</span>
+                        </div>
+                    </div>
+
+                    <!-- Output Footer Actions -->
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-gray-400">
+                        <span class="text-[11px]">Simulated Speed: ~120 tokens/sec</span>
+                        <button onclick="copyOutput()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10">
+                            <i class="fa-solid fa-copy"></i> Copy Output
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- App Detail Expanded Modal Container -->
+    <div id="detailModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 modal-blur bg-black/70 overflow-y-auto">
+        <div class="glass-panel w-full max-w-4xl max-h-[90vh] rounded-3xl border border-white/20 shadow-2xl overflow-y-auto flex flex-col my-8 relative animate-in fade-in zoom-in duration-200" id="modalContent">
+            <!-- Modal Header / Dynamic Content injected by JS -->
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 glass-panel border border-cyan-500/50 px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 text-xs text-white">
+        <i class="fa-solid fa-circle-check text-cyan-400 text-base"></i>
+        <span id="toastMsg">Action completed successfully</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 glass-panel mt-16 py-8 text-center text-xs text-gray-500 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-brain gradient-text"></i>
+                <span class="font-bold text-gray-300">AI Nexus Hub</span> &copy; 2026 Interactive Benchmarks.
+            </div>
+            <div class="flex items-center gap-6 text-gray-400">
+                <a href="#directory" class="hover:text-white">Directory</a>
+                <a href="#comparison" class="hover:text-white">Matrix</a>
+                <a href="#playground" class="hover:text-white">Playground</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript Application Logic -->
+    <script>
+        // Data Structure for the Top 10 AI Applications
+        const aiApps = [
+            {
+                id: 'chatgpt',
+                name: 'ChatGPT',
+                developer: 'OpenAI',
+                logoBg: 'from-emerald-500 to-teal-700',
+                icon: 'fa-comments',
+                category: 'Text & Chat',
+                pricing: 'Freemium',
+                priceDetails: 'Free Tier / Plus $20/mo / Team & Enterprise',
+                rating: 4.9,
+                popularityScore: 99,
+                shortDesc: 'State-of-the-art conversational AI platform for reasoning, coding, writing, and multimodal problem solving.',
+                keyFeatures: ['GPT-4o Multimodal', 'Advanced Data Analysis', 'Custom GPTs', 'Voice Mode'],
+                specs: {
+                    speed: '9.5 / 10',
+                    contextWindow: '128K Tokens',
+                    codeGen: '9.8 / 10',
+                    reasoning: '9.7 / 10',
+                    multimodal: 'Text, Audio, Vision',
+                    bestFor: 'General Purpose & Enterprise Integration'
+                },
+                pros: ['Exceptional code execution & data interpretation', 'Vast plugin & custom GPT ecosystem', 'Ultra-fast response latency'],
+                cons: ['High demand throttles during peak times', 'Occasional hallucination on niche facts'],
+                benchmark: { code: 98, creative: 95, speed: 96, research: 94 }
+            },
+            {
+                id: 'claude',
+                name: 'Claude 3.5',
+                developer: 'Anthropic',
+                logoBg: 'from-amber-600 to-orange-700',
+                icon: 'fa-feather',
+                category: 'Text & Chat',
+                pricing: 'Freemium',
+                priceDetails: 'Free Tier / Pro $20/mo',
+                rating: 4.9,
+                popularityScore: 97,
+                shortDesc: 'Next-gen AI assistant celebrated for nuanced human-like prose, precise logic, artifacts UI, and massive context context handling.',
+                keyFeatures: ['Artifacts UI', '200K Context Window', 'Nuanced Writing', 'Code Refactoring'],
+                specs: {
+                    speed: '9.3 / 10',
+                    contextWindow: '200K Tokens',
+                    codeGen: '9.9 / 10',
+                    reasoning: '9.8 / 10',
+                    multimodal: 'Text & Vision',
+                    bestFor: 'Complex Coding, Long Document Analysis & Writing'
+                },
+                pros: ['Artifacts feature lets you see & interact with rendered HTML/JS instantly', 'Superior technical writing tone', 'Massive context comprehension'],
+                cons: ['No direct audio voice mode yet', 'No live internet search integration natively'],
+                benchmark: { code: 99, creative: 98, speed: 92, research: 95 }
+            },
+            {
+                id: 'perplexity',
+                name: 'Perplexity AI',
+                developer: 'Perplexity Inc.',
+                logoBg: 'from-cyan-600 to-blue-800',
+                icon: 'fa-compass',
+                category: 'Research',
+                pricing: 'Freemium',
+                priceDetails: 'Free Tier / Pro $20/mo',
+                rating: 4.8,
+                popularityScore: 94,
+                shortDesc: 'Conversational search engine delivering real-time factual research backed by transparent citations.',
+                keyFeatures: ['Live Web Indexing', 'Academic Search', 'Pro Search (Multi-Step)', 'Source Inline Citations'],
+                specs: {
+                    speed: '9.0 / 10',
+                    contextWindow: '32K-128K Tokens',
+                    codeGen: '8.8 / 10',
+                    reasoning: '9.4 / 10',
+                    multimodal: 'Text, Files, Vision',
+                    bestFor: 'Fact-checked Web Research & News Analysis'
+                },
+                pros: ['Cites every claim directly to live source URLs', 'Selectable backend LLM (Claude, GPT, Llama)', 'Deep Research synthesis'],
+                cons: ['Less suited for raw code generation or visual generation', 'Can get cluttered with external links'],
+                benchmark: { code: 87, creative: 85, speed: 94, research: 99 }
+            },
+            {
+                id: 'midjourney',
+                name: 'Midjourney v6',
+                developer: 'Midjourney',
+                logoBg: 'from-indigo-600 to-purple-800',
+                icon: 'fa-palette',
+                category: 'Image & Design',
+                pricing: 'Paid',
+                priceDetails: 'Basic $10/mo / Standard $30/mo / Pro $60/mo',
+                rating: 4.9,
+                popularityScore: 95,
+                shortDesc: 'Industry gold-standard visual AI model producing hyper-realistic photorealistic artwork, graphics, and concept designs.',
+                keyFeatures: ['Photorealistic Quality', 'Vary Region (Inpainting)', 'Style Reference', 'Web Interface & Discord'],
+                specs: {
+                    speed: '8.5 / 10',
+                    contextWindow: 'N/A (Prompt based)',
+                    codeGen: 'N/A',
+                    reasoning: '9.0 / 10 (Visual)',
+                    multimodal: 'Image Generation',
+                    bestFor: 'Commercial Illustrations, Graphic Design & Concept Art'
+                },
+                pros: ['Unmatched aesthetic quality & photorealism', 'Incredible lighting & detail control', 'Vast community prompt inspiration'],
+                cons: ['No free tier available', 'Text rendering inside images can require fine-tuning'],
+                benchmark: { code: 20, creative: 100, speed: 85, research: 70 }
+            },
+            {
+                id: 'gemini',
+                name: 'Google Gemini 1.5 Pro',
+                developer: 'Google',
+                logoBg: 'from-blue-500 to-indigo-700',
+                icon: 'fa-gem',
+                category: 'Text & Chat',
+                pricing: 'Freemium',
+                priceDetails: 'Free Tier / Advanced $19.99/mo',
+                rating: 4.7,
+                popularityScore: 96,
+                shortDesc: 'Google’s flagship multimodal AI boasting an unprecedented 2-Million token context window and native Workspace integration.',
+                keyFeatures: ['2M Context Window', 'Native Google Workspace Integration', 'Video Audio File Processing', 'Real-Time Web Integration'],
+                specs: {
+                    speed: '9.4 / 10',
+                    contextWindow: '2 Million Tokens',
+                    codeGen: '9.2 / 10',
+                    reasoning: '9.5 / 10',
+                    multimodal: 'Text, Video, Audio, Code',
+                    bestFor: 'Massive Document & Video Analysis, Workspace Power Users'
+                },
+                pros: ['Able to analyze 1-hour videos or whole codebases in 1 prompt', 'Seamless Docs/Drive integration', 'High multimodal accuracy'],
+                cons: ['Safety filters can be overly strict at times', 'Web UI can feel minimalist'],
+                benchmark: { code: 93, creative: 92, speed: 95, research: 96 }
+            },
+            {
+                id: 'copilot',
+                name: 'GitHub Copilot',
+                developer: 'GitHub / Microsoft',
+                logoBg: 'from-slate-700 to-slate-900',
+                icon: 'fa-code',
+                category: 'Code & Developer',
+                pricing: 'Paid',
+                priceDetails: '$10/mo Individual / $19/mo Business / Free for Students',
+                rating: 4.8,
+                popularityScore: 93,
+                shortDesc: 'AI pair programmer embedded directly in VS Code and IDEs to autocomplete code, generate tests, and explain logic.',
+                keyFeatures: ['IDE Autocomplete', 'Copilot Chat in Editor', 'CLI Integration', 'Repo-wide Context'],
+                specs: {
+                    speed: '9.8 / 10',
+                    contextWindow: '64K Local Code Context',
+                    codeGen: '9.9 / 10',
+                    reasoning: '9.1 / 10',
+                    multimodal: 'Code & Text',
+                    bestFor: 'Software Engineers & Full-Stack Developers'
+                },
+                pros: ['Real-time inline code completion saves hours of typing', 'Deep integration with Git/VS Code ecosystem', 'Multi-language support'],
+                cons: ['Requires IDE setup', 'Occasionally suggests outdated syntax/deprecations'],
+                benchmark: { code: 100, creative: 75, speed: 99, research: 85 }
+            },
+            {
+                id: 'elevenlabs',
+                name: 'ElevenLabs',
+                developer: 'ElevenLabs',
+                logoBg: 'from-pink-600 to-rose-800',
+                icon: 'fa-microphone-lines',
+                category: 'Voice & Audio',
+                pricing: 'Freemium',
+                priceDetails: 'Free Tier / Starter $5/mo / Creator $22/mo',
+                rating: 4.9,
+                popularityScore: 91,
+                shortDesc: 'Industry-leading AI voice synthesis generating hyper-realistic text-to-speech, voice cloning, and AI dubbing across 29 languages.',
+                keyFeatures: ['Instant Voice Cloning', 'Emotional Speech Synthesis', 'Video AI Dubbing', 'Sound Effects Generator'],
+                specs: {
+                    speed: '9.2 / 10',
+                    contextWindow: 'N/A',
+                    codeGen: 'N/A',
+                    reasoning: '8.5 / 10 (Acoustic)',
+                    multimodal: 'Text-to-Audio',
+                    bestFor: 'Content Creators, Audiobooks, Podcast Production & Gaming'
+                },
+                pros: ['Indistinguishable human pacing, pauses, and emotion', 'Seamless multilingual audio translation', 'API access for developers'],
+                cons: ['Free tier characters exhaust quickly', 'Requires voice consent verification for custom cloning'],
+                benchmark: { code: 10, creative: 98, speed: 91, research: 75 }
+            },
+            {
+                id: 'runway',
+                name: 'Runway Gen-3 Alpha',
+                developer: 'Runway AI',
+                logoBg: 'from-purple-600 to-indigo-900',
+                icon: 'fa-video',
+                category: 'Video & Animation',
+                pricing: 'Freemium',
+                priceDetails: 'Free Credits / Standard $12/mo / Pro $28/mo',
+                rating: 4.7,
+                popularityScore: 90,
+                shortDesc: 'Pioneering generative AI suite for video production, camera control, text-to-video, and image-to-video synthesis.',
+                keyFeatures: ['Gen-3 Text-to-Video', 'Motion Brush', 'Camera Motion Control', 'Green Screen Remover'],
+                specs: {
+                    speed: '8.0 / 10',
+                    contextWindow: 'N/A',
+                    codeGen: 'N/A',
+                    reasoning: '8.8 / 10 (Spatial)',
+                    multimodal: 'Text/Image-to-Video',
+                    bestFor: 'Filmmakers, VFX Artists, & Marketing Video Production'
+                },
+                pros: ['Cinematic visual physics and lighting render quality', 'Precise camera movement keyframing', 'In-browser editing timeline'],
+                cons: ['High credit cost per video second', 'Complex physical collisions can sometimes morph'],
+                benchmark: { code: 10, creative: 99, speed: 78, research: 70 }
+            },
+            {
+                id: 'notionai',
+                name: 'Notion AI',
+                developer: 'Notion',
+                logoBg: 'from-slate-600 to-gray-800',
+                icon: 'fa-note-sticky',
+                category: 'Text & Chat',
+                pricing: 'Paid Add-on',
+                priceDetails: '$8-$10 / user / month',
+                rating: 4.6,
+                popularityScore: 89,
+                shortDesc: 'AI workspace engine built into Notion to summarize documents, generate task databases, write notes, and query workspace knowledge.',
+                keyFeatures: ['Q&A Workspace Search', 'Automated Summaries', 'Writing Assistant', 'Database Auto-fill'],
+                specs: {
+                    speed: '9.1 / 10',
+                    contextWindow: 'Workspace Wide',
+                    codeGen: '8.5 / 10',
+                    reasoning: '8.9 / 10',
+                    multimodal: 'Text & Workspace Data',
+                    bestFor: 'Productivity Teams, Knowledge Bases, & Project Management'
+                },
+                pros: ['Queries all your team documents and notes in one place', 'Automates project database fills effortlessly', 'Zero context switching needed'],
+                cons: ['Requires existing Notion workspace adoption', 'Paid add-on cost per seat'],
+                benchmark: { code: 82, creative: 90, speed: 92, research: 91 }
+            },
+            {
+                id: 'leonardo',
+                name: 'Leonardo AI',
+                developer: 'Canva / Leonardo',
+                logoBg: 'from-fuchsia-600 to-purple-900',
+                icon: 'fa-wand-magic-sparkles',
+                category: 'Image & Design',
+                pricing: 'Freemium',
+                priceDetails: '150 Daily Free Tokens / Apprentice $10/mo / Artisan $24/mo',
+                rating: 4.8,
+                popularityScore: 92,
+                shortDesc: 'Full-stack AI creative suite offering fine-tuned image models, real-time canvas drawing, 3D texture generation, and motion effects.',
+                keyFeatures: ['Realtime Canvas Drawing', 'Phoenix & Alchemy Models', '3D Texture Generation', 'Custom LoRA Training'],
+                specs: {
+                    speed: '9.4 / 10',
+                    contextWindow: 'N/A',
+                    codeGen: 'N/A',
+                    reasoning: '9.0 / 10',
+                    multimodal: 'Image & Motion',
+                    bestFor: 'Game Developers, UI Designers, & Concept Illustrators'
+                },
+                pros: ['Generous daily free tokens refill automatically', 'Interactive real-time live drawing feedback', 'Custom fine-tuned model training'],
+                cons: ['UI has many controls which can feel overwhelming for beginners', 'Complex token system'],
+                benchmark: { code: 15, creative: 97, speed: 95, research: 72 }
+            }
+        ];
+
+        // Categories List
+        const categories = ['All', 'Text & Chat', 'Code & Developer', 'Image & Design', 'Video & Animation', 'Voice & Audio', 'Research'];
+
+        // App State
+        let currentCategory = 'All';
+        let searchQuery = '';
+        let currentSort = 'popularity';
+        let selectedPlaygroundModel = 'chatgpt';
+
+        // DOM Elements
+        const appGrid = document.getElementById('appGrid');
+        const categoryChips = document.getElementById('categoryChips');
+        const searchInput = document.getElementById('searchInput');
+        const sortSelect = document.getElementById('sortSelect');
+        const noResults = document.getElementById('noResults');
+
+        // Initializer
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCategoryChips();
+            renderAppCards();
+            setupComparisonSelectors();
+            renderComparisonTable();
+            setupPlaygroundModels();
+        });
+
+        // Smooth Scroll Utility
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Render Filter Chips
+        function renderCategoryChips() {
+            categoryChips.innerHTML = categories.map(cat => `
+                <button onclick="setCategory('${cat}')" 
+                    class="px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 border ${
+                        currentCategory === cat 
+                            ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white border-transparent shadow-glow-cyan' 
+                            : 'bg-brand-dark/60 text-gray-400 border-white/10 hover:border-white/20 hover:text-white'
+                    }">
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        // Set Category
+        function setCategory(cat) {
+            currentCategory = cat;
+            renderCategoryChips();
+            renderAppCards();
+        }
+
+        // Handle Search & Filtering Logic
+        function getFilteredApps() {
+            return aiApps.filter(app => {
+                const matchesCategory = currentCategory === 'All' || app.category === currentCategory;
+                const matchesSearch = searchQuery === '' || 
+                    app.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    app.developer.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    app.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    app.keyFeatures.some(f => f.toLowerCase().includes(searchQuery.toLowerCase()));
+                
+                return matchesCategory && matchesSearch;
+            }).sort((a, b) => {
+                if (currentSort === 'popularity') return b.popularityScore - a.popularityScore;
+                if (currentSort === 'rating') return b.rating - a.rating;
+                if (currentSort === 'name') return a.name.localeCompare(b.name);
+                if (currentSort === 'category') return a.category.localeCompare(b.category);
+                return 0;
+            });
+        }
+
+        // Render Cards Grid
+        function renderAppCards() {
+            const filtered = getFilteredApps();
+
+            if (filtered.length === 0) {
+                appGrid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+            appGrid.innerHTML = filtered.map(app => `
+                <div class="glass-panel glass-panel-hover rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 relative group">
+                    
+                    <!-- Top Info Header -->
+                    <div class="space-y-4">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br ${app.logoBg} flex items-center justify-center text-white text-xl shadow-lg">
+                                    <i class="fa-solid ${app.icon}"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-extrabold text-lg text-white group-hover:text-cyan-400 transition-colors">${app.name}</h3>
+                                    <span class="text-xs text-gray-400">${app.developer}</span>
+                                </div>
+                            </div>
+                            <!-- Price Badge -->
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold border ${getPricingStyle(app.pricing)}">
+                                ${app.pricing}
+                            </span>
+                        </div>
+
+                        <!-- Description -->
+                        <p class="text-xs text-gray-300 line-clamp-2 leading-relaxed">
+                            ${app.shortDesc}
+                        </p>
+
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-1.5 pt-1">
+                            ${app.keyFeatures.slice(0, 3).map(feat => `
+                                <span class="px-2 py-1 rounded-md bg-white/5 border border-white/5 text-[10px] font-medium text-gray-300">
+                                    ${feat}
+                                </span>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Footer Specs & Action -->
+                    <div class="pt-5 mt-5 border-t border-white/10 flex items-center justify-between">
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                            <span class="text-xs font-bold text-white">${app.rating}</span>
+                            <span class="text-[10px] text-gray-500">/ 5.0</span>
+                        </div>
+
+                        <button onclick="openDetailModal('${app.id}')" class="px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-cyan-500/20 text-cyan-400 hover:text-white border border-cyan-500/30 text-xs font-semibold transition-all flex items-center gap-1.5">
+                            Details <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Helper for pricing pill styling
+        function getPricingStyle(pricing) {
+            if (pricing === 'Freemium') return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30';
+            if (pricing === 'Paid') return 'bg-purple-500/10 text-purple-400 border-purple-500/30';
+            return 'bg-blue-500/10 text-blue-400 border-blue-500/30';
+        }
+
+        // Event Listeners for Filters
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderAppCards();
+        });
+
+        sortSelect.addEventListener('change', (e) => {
+            currentSort = e.target.value;
+            renderAppCards();
+        });
+
+        function resetFilters() {
+            searchQuery = '';
+            currentCategory = 'All';
+            currentSort = 'popularity';
+            searchInput.value = '';
+            sortSelect.value = 'popularity';
+            renderCategoryChips();
+            renderAppCards();
+        }
+
+        // Modal Logic
+        const detailModal = document.getElementById('detailModal');
+        const modalContent = document.getElementById('modalContent');
+
+        function openDetailModal(appId) {
+            const app = aiApps.find(a => a.id === appId);
+            if (!app) return;
+
+            modalContent.innerHTML = `
+                <!-- Close Button -->
+                <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 flex items-center justify-center z-10 transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+                <!-- Header Banner -->
+                <div class="p-6 sm:p-8 bg-gradient-to-r ${app.logoBg} relative overflow-hidden">
+                    <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-2xl bg-black/40 backdrop-blur flex items-center justify-center text-white text-3xl border border-white/20">
+                                <i class="fa-solid ${app.icon}"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-2xl sm:text-3xl font-black text-white">${app.name}</h2>
+                                <p class="text-xs text-white/80 font-medium">Developed by ${app.developer} • Category: ${app.category}</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-bold bg-black/40 backdrop-blur text-white border border-white/20">
+                                ${app.priceDetails}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Modal Content -->
+                <div class="p-6 sm:p-8 space-y-6 text-xs text-gray-300">
+                    
+                    <!-- App Overview -->
+                    <div>
+                        <h4 class="text-sm font-bold text-white mb-2 uppercase font-mono tracking-wider text-cyan-400">Overview</h4>
+                        <p class="text-sm leading-relaxed text-gray-200">${app.shortDesc}</p>
+                    </div>
+
+                    <!-- Performance Matrix Bar Charts -->
+                    <div class="bg-brand-dark/80 p-5 rounded-2xl border border-white/10 space-y-3">
+                        <h4 class="text-xs font-bold text-white uppercase font-mono tracking-wider text-purple-400">Performance Benchmarks</h4>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Coding & Engineering</span>
+                                    <span class="font-bold text-cyan-400">${app.benchmark.code}%</span>
+                                </div>
+                                <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                    <div class="h-full bg-cyan-400 rounded-full" style="width: ${app.benchmark.code}%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Creative & Style Output</span>
+                                    <span class="font-bold text-pink-400">${app.benchmark.creative}%</span>
+                                </div>
+                                <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                    <div class="h-full bg-pink-400 rounded-full" style="width: ${app.benchmark.creative}%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Processing Speed & Latency</span>
+                                    <span class="font-bold text-emerald-400">${app.benchmark.speed}%</span>
+                                </div>
+                                <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                    <div class="h-full bg-emerald-400 rounded-full" style="width: ${app.benchmark.speed}%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Research & Fact Accuracy</span>
+                                    <span class="font-bold text-purple-400">${app.benchmark.research}%</span>
+                                </div>
+                                <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                    <div class="h-full bg-purple-400 rounded-full" style="width: ${app.benchmark.research}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Specs Breakdown Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+                            <span class="text-gray-400 block text-[10px]">Context Window</span>
+                            <span class="font-bold text-white text-xs">${app.specs.contextWindow}</span>
+                        </div>
+                        <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+                            <span class="text-gray-400 block text-[10px]">Speed Score</span>
+                            <span class="font-bold text-cyan-400 text-xs">${app.specs.speed}</span>
+                        </div>
+                        <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+                            <span class="text-gray-400 block text-[10px]">Code Gen Score</span>
+                            <span class="font-bold text-purple-400 text-xs">${app.specs.codeGen}</span>
+                        </div>
+                        <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+                            <span class="text-gray-400 block text-[10px]">Reasoning Score</span>
+                            <span class="font-bold text-pink-400 text-xs">${app.specs.reasoning}</span>
+                        </div>
+                        <div class="bg-white/5 p-3 rounded-xl border border-white/5 col-span-2 sm:col-span-2">
+                            <span class="text-gray-400 block text-[10px]">Best Use Case</span>
+                            <span class="font-bold text-emerald-400 text-xs">${app.specs.bestFor}</span>
+                        </div>
+                    </div>
+
+                    <!-- Pros & Cons Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-emerald-500/5 p-4 rounded-2xl border border-emerald-500/20 space-y-2">
+                            <h5 class="font-bold text-emerald-400 flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check"></i> Primary Strengths
+                            </h5>
+                            <ul class="space-y-1.5 list-disc list-inside text-gray-300">
+                                ${app.pros.map(p => `<li>${p}</li>`).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="bg-rose-500/5 p-4 rounded-2xl border border-rose-500/20 space-y-2">
+                            <h5 class="font-bold text-rose-400 flex items-center gap-2">
+                                <i class="fa-solid fa-circle-exclamation"></i> Limitations
+                            </h5>
+                            <ul class="space-y-1.5 list-disc list-inside text-gray-300">
+                                ${app.cons.map(c => `<li>${c}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- External Simulated Link CTA -->
+                    <div class="pt-4 flex items-center justify-between border-t border-white/10">
+                        <span class="text-[11px] text-gray-400">Want to test ${app.name} live?</span>
+                        <button onclick="simulateLaunch('${app.name}')" class="px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-gradient-to-r ${app.logoBg} shadow-lg hover:opacity-90 transition-all flex items-center gap-2">
+                            Launch App Platform <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </button>
+                    </div>
+
+                </div>
+            `;
+            detailModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            detailModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        detailModal.addEventListener('click', (e) => {
+            if (e.target === detailModal) closeModal();
+        });
+
+        function simulateLaunch(appName) {
+            showToast(`Opening simulated external link for ${appName}...`);
+        }
+
+        // Comparison Matrix Setup & Render
+        const toolSelect1 = document.getElementById('compareTool1');
+        const toolSelect2 = document.getElementById('compareTool2');
+        const toolSelect3 = document.getElementById('compareTool3');
+
+        function setupComparisonSelectors() {
+            const options = aiApps.map(app => `<option value="${app.id}">${app.name}</option>`).join('');
+            toolSelect1.innerHTML = options;
+            toolSelect2.innerHTML = options;
+            toolSelect3.innerHTML = options;
+
+            // Default defaults
+            toolSelect1.value = 'chatgpt';
+            toolSelect2.value = 'claude';
+            toolSelect3.value = 'perplexity';
+
+            toolSelect1.addEventListener('change', renderComparisonTable);
+            toolSelect2.addEventListener('change', renderComparisonTable);
+            toolSelect3.addEventListener('change', renderComparisonTable);
+        }
+
+        function renderComparisonTable() {
+            const app1 = aiApps.find(a => a.id === toolSelect1.value);
+            const app2 = aiApps.find(a => a.id === toolSelect2.value);
+            const app3 = aiApps.find(a => a.id === toolSelect3.value);
+
+            const apps = [app1, app2, app3];
+
+            const table = document.getElementById('comparisonTable');
+            table.innerHTML = `
+                <thead>
+                    <tr class="border-b border-white/10 bg-white/5">
+                        <th class="p-4 font-bold text-gray-300 w-1/4">Feature / Metric</th>
+                        ${apps.map(a => `
+                            <th class="p-4 font-extrabold text-white text-base">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-lg bg-gradient-to-br ${a.logoBg} flex items-center justify-center text-xs">
+                                        <i class="fa-solid ${a.icon}"></i>
+                                    </div>
+                                    ${a.name}
+                                </div>
+                            </th>
+                        `).join('')}
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-xs text-gray-300">
+                    <tr>
+                        <td class="p-4 font-semibold text-gray-400">Category</td>
+                        ${apps.map(a => `<td class="p-4 font-bold text-cyan-400">${a.category}</td>`).join('')}
+                    </tr>
+                    <tr>
+                        <td class="p-4 font-semibold text-gray-400">Developer</td>
+                        ${apps.map(a => `<td class="p-4">${a.developer}</td>`).join('')}
+                    </tr>
+                    <tr>
+                        <td class="p-4 font-semibold text-gray-400">Pricing Model</td>
+                        ${apps.map(a => `<td class="p-4 font-medium text-purple-300">${a.pricing}</td>`).join('')}
+                    </tr>
+                    <tr>
+                        <td class="p-4 font-semibold text-gray-400">Context Window</td>
+                        ${apps.map(a => `<td class="p-4 font-mono">${a.specs.contextWindow}</td>`).join('')}
+                    </tr>
+                    <tr>
+                        <td class="p-4 font-semibold text-gray-400">Coding Score</td>
+                        ${apps.map(a => `<td class="p-4 font-bold text-emerald-400">${a.benchmark.code}%</td>`).join('')}
+                    </tr>
+                    <tr>
+                        <td class="p-4 font-semibold text-gray-400">Creative Score</td>
+                        ${apps.map(a => `<td class="p-4 font-bold text-pink-400">${a.benchmark.creative}%</td>`).join('')}
+                    </tr>
+                    <tr>
+                        <td class="p-4 font-semibold text-gray-400">Research Rating</td>
+                        ${apps.map(a => `<td class="p-4 font-bold text-blue-400">${a.benchmark.research}%</td>`).join('')}
+                    </tr>
+                    <tr>
+                        <td class="p-4 font-semibold text-gray-400">Primary Strength</td>
+                        ${apps.map(a => `<td class="p-4 text-gray-300">${a.pros[0]}</td>`).join('')}
+                    </tr>
+                </tbody>
+            `;
+        }
+
+        // Live AI Prompt Playground Simulator Logic
+        const playgroundModelSelect = document.getElementById('playgroundModelSelect');
+        const userPrompt = document.getElementById('userPrompt');
+        const simulationOutput = document.getElementById('simulationOutput');
+        const activeModelTitle = document.getElementById('activeModelTitle');
+        const activeModelBadge = document.getElementById('activeModelBadge');
+        const tokenCount = document.getElementById('tokenCount');
+        const latencyMs = document.getElementById('latencyMs');
+        const runSimBtn = document.getElementById('runSimBtn');
+
+        const simModels = [
+            { id: 'chatgpt', name: 'ChatGPT (GPT-4o)', color: 'bg-emerald-400' },
+            { id: 'claude', name: 'Claude 3.5 Sonnet', color: 'bg-amber-400' },
+            { id: 'perplexity', name: 'Perplexity Search', color: 'bg-cyan-400' },
+            { id: 'copilot', name: 'GitHub Copilot', color: 'bg-slate-400' }
+        ];
+
+        function setupPlaygroundModels() {
+            playgroundModelSelect.innerHTML = simModels.map(m => `
+                <button onclick="selectPlaygroundModel('${m.id}')" id="modelBtn_${m.id}" 
+                    class="p-2.5 rounded-xl border text-left text-xs font-semibold flex items-center gap-2 transition-all ${
+                        selectedPlaygroundModel === m.id 
+                            ? 'bg-white/10 border-cyan-500 text-white' 
+                            : 'bg-brand-dark/50 border-white/10 text-gray-400 hover:border-white/20'
+                    }">
+                    <span class="w-2.5 h-2.5 rounded-full ${m.color}"></span>
+                    ${m.name}
+                </button>
+            `).join('');
+        }
+
+        function selectPlaygroundModel(id) {
+            selectedPlaygroundModel = id;
+            setupPlaygroundModels();
+            const modelObj = simModels.find(m => m.id === id);
+            activeModelTitle.innerText = `${modelObj.name} Output`;
+            activeModelBadge.className = `w-3 h-3 rounded-full ${modelObj.color}`;
+        }
+
+        const presetPrompts = {
+            code: "Write a JavaScript function to perform a binary search on a sorted array with error handling.",
+            creative: "Write a dramatic intro scene for a sci-fi novel set on a Dyson Sphere orbiting a dying star.",
+            research: "Synthesize the key computational advantages of Quantum Annealing over classical Monte Carlo algorithms.",
+            image: "A high-detail 8k cinematic shot of a cybernetic fox standing under neon lights in rain, photorealistic, 35mm lens."
+        };
+
+        function setPrompt(type) {
+            userPrompt.value = presetPrompts[type] || '';
+        }
+
+        // Simulated Response Streaming Text
+        const simulatedResponses = {
+            chatgpt: {
+                code: "function binarySearch(arr, target) {\n  if (!Array.isArray(arr)) throw new Error('Input must be array');\n  let left = 0, right = arr.length - 1;\n  while (left <= right) {\n    const mid = Math.floor((left + right) / 2);\n    if (arr[mid] === target) return mid;\n    if (arr[mid] < target) left = mid + 1;\n    else right = mid - 1;\n  }\n  return -1;\n}\n// Executed in 0.04ms",
+                creative: "The outer shell of Sol-9 groaned under gravitational torque. Captain Vance stared through the reinforced quartz viewport as the star sputtered its final crimson flare...",
+                research: "Quantum Annealing leverages quantum tunneling to traverse high-dimensional energy landscapes faster than classical Simulated Annealing, effectively bypassing tall thermal barriers.",
+                image: "Prompt processed for DALL-E 3: Rendering cybernetic fox portrait with ultra-fine particle illumination, screen-space reflections, and 85mm anamorphic depth of field."
+            },
+            claude: {
+                code: "/**\n * Binary Search implementation\n */\nexport function binarySearch<T>(arr: T[], target: T): number {\n  let low = 0;\n  let high = arr.length - 1;\n  while (low <= high) {\n    const mid = (low + high) >>> 1;\n    if (arr[mid] === target) return mid;\n    if (arr[mid] < target) low = mid + 1;\n    else high = mid - 1;\n  }\n  return -1;\n}",
+                creative: "Light inside Sol-9 did not spill; it clung. For three thousand cycles, the megastructure had siphoned the dying star's dying pulse into vast obsidian capacitors...",
+                research: "Unlike gate-based quantum devices, Quantum Annealing directly solves quadratic unconstrained binary optimization (QUBO) problems by evolving a ground-state Hamiltonian.",
+                image: "Midjourney Style Reference Render: Photorealistic cybernetic red fox, glistening rain droplets on metallic chrome alloy, cyberpunk city glow, shot on 35mm ISO 400."
+            }
+        };
+
+        let streamInterval = null;
+
+        function runSimulation() {
+            const promptVal = userPrompt.value.trim();
+            if (!promptVal) {
+                showToast("Please enter a prompt first!");
+                return;
+            }
+
+            if (streamInterval) clearInterval(streamInterval);
+
+            runSimBtn.disabled = true;
+            runSimBtn.classList.add('opacity-50');
+            simulationOutput.innerText = '';
+            
+            let textToStream = "";
+            const modelKey = selectedPlaygroundModel;
+            
+            // Generate simulated output text
+            if (promptVal.includes("binary") || promptVal.includes("code") || promptVal.includes("function")) {
+                textToStream = (simulatedResponses[modelKey] && simulatedResponses[modelKey].code) || simulatedResponses.chatgpt.code;
+            } else if (promptVal.includes("sci-fi") || promptVal.includes("intro") || promptVal.includes("novel")) {
+                textToStream = (simulatedResponses[modelKey] && simulatedResponses[modelKey].creative) || simulatedResponses.chatgpt.creative;
+            } else if (promptVal.includes("Quantum") || promptVal.includes("research")) {
+                textToStream = (simulatedResponses[modelKey] && simulatedResponses[modelKey].research) || simulatedResponses.chatgpt.research;
+            } else {
+                textToStream = `[Simulated ${simulatedResponses[modelKey] ? modelKey.toUpperCase() : 'AI'} Response]\nAnalyzing input: "${promptVal}"\n\nResult: The model evaluated this query across multi-layer attention heads and synthesized a optimal output with 99.4% confidence score.`;
+            }
+
+            let index = 0;
+            const startTime = performance.now();
+            
+            streamInterval = setInterval(() => {
+                simulationOutput.innerText += textToStream[index];
+                index++;
+                tokenCount.innerText = Math.round(index * 1.3);
+                
+                const currentLatency = Math.round(performance.now() - startTime);
+                latencyMs.innerText = `${currentLatency}ms`;
+
+                if (index >= textToStream.length) {
+                    clearInterval(streamInterval);
+                    runSimBtn.disabled = false;
+                    runSimBtn.classList.remove('opacity-50');
+                    showToast("Simulated generation complete!");
+                }
+            }, 18);
+        }
+
+        function copyOutput() {
+            const text = simulationOutput.innerText;
+            if (!text || text.startsWith("//")) {
+                showToast("Nothing to copy yet!");
+                return;
+            }
+            
+            // Clipboard copy fallback method
+            const tempInput = document.createElement("textarea");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            showToast("Copied to clipboard!");
+        }
+
+        // Helper Toast Notification
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            toastMsg.innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
